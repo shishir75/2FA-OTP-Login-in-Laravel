@@ -51,6 +51,30 @@
                             </div>
                         </div>
 
+{{--                        <div class="form-group row">--}}
+{{--                            <div class="col-md-6 offset-md-4">--}}
+{{--                                <div class="form-check">--}}
+{{--                                    <input class="form-check-input" type="radio" name="otp_via" id="sms" value="sms">--}}
+
+{{--                                    <label class="form-check-label" for="sms">--}}
+{{--                                        OTP via SMS--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="form-group row">--}}
+{{--                            <div class="col-md-6 offset-md-4">--}}
+{{--                                <div class="form-check">--}}
+{{--                                    <input class="form-check-input" type="radio" name="otp_via" id="mail" value="mail">--}}
+
+{{--                                    <label class="form-check-label" for="mail">--}}
+{{--                                        OTP via Mail--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

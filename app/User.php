@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -36,4 +38,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+//
+//    public function cacheTheOTP()
+//    {
+//        $OTP = rand(100000, 999999);
+//        Cache::put([$this->OTPKey() => $OTP], now()->addSeconds(60));
+//        return $OTP;
+//    }
+//
+//
+//    public function sendOTP($via)
+//    {
+//        if ($via === 'sms') {
+//
+//        } else {
+//            Mail::to('iamsarder20@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
+//        }
+//    }
 }
