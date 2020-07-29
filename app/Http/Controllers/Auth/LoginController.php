@@ -38,15 +38,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-//
-//    protected function attemptLogin(Request $request)
-//    {
-//        $result = $this->guard()->attempt(
-//            $this->credentials($request), $request->filled('remember')
-//        );
-//
-//        if ($result) {
-//            auth()->user()->sendOTP(request('otp_via'));
-//        }
-//    }
+
+    protected function attemptLogin(Request $request)
+    {
+        $result = $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
+
+        if ($result) {
+            auth()->user()->sendOTP(request('otp_via'));
+        }
+    }
 }
