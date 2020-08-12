@@ -38,21 +38,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-//
-//    public function cacheTheOTP()
-//    {
-//        $OTP = rand(100000, 999999);
-//        Cache::put([$this->OTPKey() => $OTP], now()->addSeconds(60));
-//        return $OTP;
-//    }
-//
-//
-//    public function sendOTP($via)
-//    {
-//        if ($via === 'sms') {
-//
-//        } else {
-//            Mail::to('iamsarder20@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
-//        }
-//    }
+
+   public function cacheTheOTP()
+   {
+       $OTP = rand(100000, 999999);
+       Cache::put([$this->OTPKey() => $OTP], now()->addSeconds(60));
+       return $OTP;
+   }
+
+
+   public function sendOTP($via)
+   {
+       if ($via === 'sms') {
+
+       } else {
+           Mail::to('iamsarder20@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
+       }
+   }
 }
