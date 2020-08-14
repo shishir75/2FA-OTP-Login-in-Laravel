@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Providers\RouteServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Cache;
 
 class LoginController extends Controller
 {
@@ -49,9 +50,17 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        Mail::send(new OTPMail);
-        return $this->guard()->attempt(
+
+        $result = $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
+
+        if ($result) {
+            $OTP = rand(100000, 999999);
+            Cache::put('OTP', $OTP, now()->addSeconds(10));
+            Mail::to('iamsarder20@gmail.com')->send(new OTPMail($OTP));
+        }
+
+        return $result;
     }
 }

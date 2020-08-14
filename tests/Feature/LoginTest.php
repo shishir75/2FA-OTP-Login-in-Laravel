@@ -27,6 +27,4 @@ class LoginTest extends TestCase
         $this->get('/home')->assertStatus(200);
     }
 
-
-
 }

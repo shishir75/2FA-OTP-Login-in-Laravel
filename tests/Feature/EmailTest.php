@@ -23,10 +23,28 @@ class EmailTest extends TestCase
         Mail::fake();
 
         $this->withoutExceptionHandling();
-        
+
         $user = factory(User::class)->create();
         $res = $this->post('/login', ['email'=> $user->email, 'password'=> 'password']);
 
         Mail::assertSent(OTPMail::class);
+    }
+
+    /**
+    * A Test Method.
+    * @test
+    * @return void
+    */
+    public function an_otp_email_is_not_sent_if_credentials_are_incorrect()
+    {
+        Mail::fake();
+
+        //$this->withoutExceptionHandling();
+
+        $user = factory(User::class)->create();
+        $res = $this->post('/login', ['email'=> $user->email, 'password'=> 'abc']);
+
+        Mail::assertNotSent(OTPMail::class);
+
     }
 }
