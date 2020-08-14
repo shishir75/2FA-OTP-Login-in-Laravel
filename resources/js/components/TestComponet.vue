@@ -7,7 +7,6 @@
 <script>
 export default {
   data() {
-    components: ["TestComponent"];
     return {
       show: true,
     };
