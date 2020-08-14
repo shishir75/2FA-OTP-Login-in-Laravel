@@ -39,12 +39,21 @@ class EmailTest extends TestCase
     {
         Mail::fake();
 
-        //$this->withoutExceptionHandling();
-
         $user = factory(User::class)->create();
         $res = $this->post('/login', ['email'=> $user->email, 'password'=> 'abc']);
 
         Mail::assertNotSent(OTPMail::class);
+    }
 
+    /**
+    * A Test Method.
+    * @test
+    * @return void
+    */
+    public function otp_is_stored_in_cache_for_the_user()
+    {
+        $user = factory(User::class)->create();
+        $res = $this->post('/login', ['email' => $user->email, 'password' => 'password']);
+        $this->assertNotNull($user->OTP());
     }
 }
