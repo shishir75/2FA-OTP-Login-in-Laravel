@@ -19,12 +19,9 @@ class VerifyOTPTest extends TestCase
     */
     public function user_can_submit_otp_and_get_verified()
     {
-        $this->withoutExceptionHandling();
-        $otp = rand(100000, 999999);
-        Cache::put('OTP', $otp, now()->addSeconds(20));
-        $user = factory(User::class)->create();
-        $this->actingAs($user);
-        $this->post('/verifyOTP', ['OTP' => $otp])->assertStatus(201);
+        $this->loginUser();
+        $OTP = auth()->user()->cacheTheOTP();
+        $this->post('/verifyOTP', [auth()->user()->OTPKey() => $OTP])->assertStatus(201);
         $this->assertDatabaseHas('users', ['isVerified' => 1]);
     }
 }
