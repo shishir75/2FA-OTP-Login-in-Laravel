@@ -35,4 +35,27 @@ class VerifyOTPTest extends TestCase
         $this->loginUser();
         $this->get('/verifyOTP')->assertStatus(200)->assertSee('Enter OTP');
     }
+
+    /**
+    * A Test Method.
+    * @test
+    * @return void
+    */
+    public function invalid_otp_returns_error_message()
+    {
+        $this->loginUser();
+        $this->post('/verifyOTP', ["OTP" => 'InvalidOTP'])->assertSessionHasErrors();
+    }
+
+    /**
+    * A Test Method.
+    * @test
+    * @return void
+    */
+    public function if_no_otp_is_given_then_it_return_with_error()
+    {
+        $this->withExceptionHandling();
+        $this->loginUser();
+        $this->post('/verifyOTP', ["OTP" => null])->assertSessionHasErrors('OTP');
+    }
 }
