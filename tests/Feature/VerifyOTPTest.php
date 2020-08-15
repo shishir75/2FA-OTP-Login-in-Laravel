@@ -21,7 +21,18 @@ class VerifyOTPTest extends TestCase
     {
         $this->loginUser();
         $OTP = auth()->user()->cacheTheOTP();
-        $this->post('/verifyOTP', [auth()->user()->OTPKey() => $OTP])->assertStatus(201);
+        $this->post('/verifyOTP', [auth()->user()->OTPKey() => $OTP])->assertStatus(302);
         $this->assertDatabaseHas('users', ['isVerified' => 1]);
+    }
+
+    /**
+    * A Test Method.
+    * @test
+    * @return void
+    */
+    public function user_can_see_verification_page()
+    {
+        $this->loginUser();
+        $this->get('/verifyOTP')->assertStatus(200)->assertSee('Enter OTP');
     }
 }

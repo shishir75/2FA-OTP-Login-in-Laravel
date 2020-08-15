@@ -15,7 +15,7 @@ class LoginTest extends TestCase
     public function after_login_user_can_not_access_home_page_until_verified()
     {
         $this->loginUser();
-        $this->get('/home')->assertRedirect('/');
+        $this->get('/home')->assertRedirect('/verifyOTP');
     }
 
     /** @test */

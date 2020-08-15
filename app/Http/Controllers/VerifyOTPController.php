@@ -11,7 +11,12 @@ class VerifyOTPController extends Controller
     {
         if(request('OTP') == Cache::get('OTP')) {
             auth()->user()->update(['isVerified'=> true]);
-            return response(null, 201);
+            return redirect('/home');
         }
+    }
+
+    public function showVerifyForm()
+    {
+        return view('OTP.verify');
     }
 }

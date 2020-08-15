@@ -20,7 +20,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/verifyOTP', 'VerifyOTPController@showVerifyForm');
 Route::post('/verifyOTP', 'VerifyOTPController@verify');
+
 
 Route::group(['middleware' => 'TwoFA'], function () {
 
