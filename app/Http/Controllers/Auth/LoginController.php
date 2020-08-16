@@ -50,13 +50,12 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-
         $result = $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
 
         if ($result) {
-            auth()->user()->sendOTP();
+            auth()->user()->sendOTP(request('otp_via'));
         }
 
         return $result;

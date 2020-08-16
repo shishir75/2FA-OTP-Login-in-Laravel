@@ -58,8 +58,12 @@ class User extends Authenticatable
     }
 
 
-    public function sendOTP()
+    public function sendOTP($via)
     {
-        Mail::to('iamsarder20@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
+        if ($via == 'via_sms') {
+
+        } else {
+            Mail::to('iamsarder20@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
+        }
     }
 }
