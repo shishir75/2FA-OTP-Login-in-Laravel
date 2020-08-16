@@ -9,6 +9,7 @@ class ResendOTPController extends Controller
 {
     public function resend(ResendOTPRequest $request)
     {
-        return response(null, 201);
+        auth()->user()->sendOTP($request->otp_via);
+        return back()->with('message', 'Your new OTP is sent, Please check');
     }
 }

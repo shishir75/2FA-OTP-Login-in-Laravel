@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/verifyOTP', 'VerifyOTPController@showVerifyForm');
 Route::post('/verifyOTP', 'VerifyOTPController@verify');
-Route::post('/resent-otp', 'ResendOTPController@resend');
+Route::post('/resend-otp', 'ResendOTPController@resend');
 
 
 Route::group(['middleware' => 'TwoFA'], function () {

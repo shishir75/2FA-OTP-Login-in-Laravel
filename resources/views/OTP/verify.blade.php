@@ -55,6 +55,12 @@
                                 </div>
                             @endif
 
+                            @if (session()->has('message'))
+                                <div class="alert alert-success">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
+
                             <div class="card-body">
                                 <form action="/verifyOTP" method="POST">
                                     @csrf
@@ -67,15 +73,19 @@
                             </div>
 
                             <div class="container mb-4">
-                                <input type="submit" class="btn btn-secondary mr-4" value="Resend OTP via">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input mt-3" type="radio" name="otp_via" id="email" value="via_email" checked>
-                                    <label class="form-check-label mt-3" for="email">Email</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input mt-3" type="radio" name="otp_via" id="sms" value="via_sms">
-                                    <label class="form-check-label mt-3" for="sms">SMS</label>
-                                </div>
+                                <form action="/resend-otp" method="POST">
+                                    @csrf
+                                    <input type="submit" class="btn btn-secondary mr-4" value="Resend OTP via">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input mt-3" type="radio" name="otp_via" id="email" value="via_email" checked>
+                                        <label class="form-check-label mt-3" for="email">Email</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input mt-3" type="radio" name="otp_via" id="sms" value="via_sms">
+                                        <label class="form-check-label mt-3" for="sms">SMS</label>
+                                    </div>
+                                </form>
+
                             </div>
 
                         </div>
