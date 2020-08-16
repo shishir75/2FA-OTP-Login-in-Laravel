@@ -9,7 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Bitfumes\KarixNotificationChannel\KarixChannel;
 use Bitfumes\KarixNotificationChannel\KarixMessage;
 
-class OTPNotification extends Notification
+class OTPNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

@@ -5,14 +5,24 @@ namespace Tests\Feature;
 use App\User;
 use Tests\TestCase;
 use App\Mail\OTPMail;
+use App\Notifications\OTPNotification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Notification;
 
 class EmailTest extends TestCase
 {
     use DatabaseMigrations;
+
+    public $user;
+
+    public function setUp() : void
+    {
+        parent::setUp();
+        $this->user = factory(User::class)->create();
+    }
     /**
      * A basic feature test example.
      * @test
@@ -20,10 +30,9 @@ class EmailTest extends TestCase
      */
     public function an_otp_is_send_when_an_user_is_logged_in()
     {
-        Mail::fake();
-        $user = factory(User::class)->create();
-        $res = $this->post('/login', ['email'=> $user->email, 'password'=> 'password']);
-        Mail::assertSent(OTPMail::class);
+        Notification::fake();
+        $res = $this->post('/login', ['email'=> $this->user->email, 'password'=> 'password', 'otp_via' => 'via_email']);
+        Notification::assertSentTo([$this->user], OTPNotification::class);
     }
 
     /**
@@ -35,8 +44,7 @@ class EmailTest extends TestCase
     {
         Mail::fake();
         $this->withExceptionHandling();
-        $user = factory(User::class)->create();
-        $res = $this->post('/login', ['email'=> $user->email, 'password'=> 'abc']);
+        $res = $this->post('/login', ['email'=> $this->user->email, 'password'=> 'abc']);
         Mail::assertNotSent(OTPMail::class);
     }
 
@@ -47,8 +55,7 @@ class EmailTest extends TestCase
     */
     public function otp_is_stored_in_cache_for_the_user()
     {
-        $user = factory(User::class)->create();
-        $res = $this->post('/login', ['email' => $user->email, 'password' => 'password']);
-        $this->assertNotNull($user->OTP());
+        $res = $this->post('/login', ['email' => $this->user->email, 'password' => 'password']);
+        $this->assertNotNull($this->user->OTP());
     }
 }

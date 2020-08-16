@@ -12,6 +12,17 @@ use Tests\TestCase;
 class VerifyOTPTest extends TestCase
 {
     use DatabaseMigrations;
+
+    /**
+    * A setUp Method.
+    * @return void
+    */
+    public function setUp() : void
+    {
+        parent::setUp();
+        $this->loginUser();
+    }
+
     /**
     * A Test Method.
     * @test
@@ -19,7 +30,6 @@ class VerifyOTPTest extends TestCase
     */
     public function user_can_submit_otp_and_get_verified()
     {
-        $this->loginUser();
         $OTP = auth()->user()->cacheTheOTP();
         $this->post('/verifyOTP', ["OTP" => $OTP])->assertStatus(302);
         $this->assertDatabaseHas('users', ['isVerified' => 1]);
@@ -32,7 +42,6 @@ class VerifyOTPTest extends TestCase
     */
     public function user_can_see_verification_page()
     {
-        $this->loginUser();
         $this->get('/verifyOTP')->assertStatus(200)->assertSee('Enter OTP');
     }
 
@@ -43,7 +52,6 @@ class VerifyOTPTest extends TestCase
     */
     public function invalid_otp_returns_error_message()
     {
-        $this->loginUser();
         $this->post('/verifyOTP', ["OTP" => 'InvalidOTP'])->assertSessionHasErrors();
     }
 
@@ -55,7 +63,6 @@ class VerifyOTPTest extends TestCase
     public function if_no_otp_is_given_then_it_return_with_error()
     {
         $this->withExceptionHandling();
-        $this->loginUser();
         $this->post('/verifyOTP', ["OTP" => null])->assertSessionHasErrors('OTP');
     }
 }
