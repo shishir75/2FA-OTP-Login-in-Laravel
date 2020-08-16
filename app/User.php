@@ -61,11 +61,8 @@ class User extends Authenticatable
 
     public function sendOTP($via)
     {
-        if ($via == 'via_sms') {
-            $this->notify(new OTPNotification);
-        } else {
-            Mail::to('iamsarder20@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
-        }
+        $OTP = $this->cacheTheOTP();
+        $this->notify(new OTPNotification($via, $OTP));
     }
 
     public function routeNotificationForKarix()
