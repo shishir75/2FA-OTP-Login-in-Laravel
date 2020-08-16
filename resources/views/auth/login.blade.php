@@ -54,7 +54,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="otp_via" id="via_email" value="via_email">
+                                    <input class="form-check-input" type="radio" name="otp_via" id="via_email" value="via_email" checked>
 
                                     <label class="form-check-label" for="via_email">
                                         OTP via Email

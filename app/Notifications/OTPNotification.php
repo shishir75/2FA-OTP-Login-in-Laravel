@@ -42,7 +42,6 @@ class OTPNotification extends Notification
     {
         return KarixMessage::create()
                         ->from('+8801723795078')
-                        ->to('+8801744681133')
                         ->content('Your OTP for login is : ' . $this->OTP);
     }
 
