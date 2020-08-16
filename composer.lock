@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "614e4c80e65fb97efb5ff0b91df4fc45",
+    "content-hash": "13dada0157b86c9ee25716fcfad64a4a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -57,6 +57,50 @@
                 "stack"
             ],
             "time": "2020-05-31T07:17:05+00:00"
+        },
+        {
+            "name": "bitfumes/karix-notification-channel",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bitfumes/Laravel-Notification-Channel-Karix.git",
+                "reference": "2ed5eb18ab8d0a258887d69d9eccc09088a8a840"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bitfumes/Laravel-Notification-Channel-Karix/zipball/2ed5eb18ab8d0a258887d69d9eccc09088a8a840",
+                "reference": "2ed5eb18ab8d0a258887d69d9eccc09088a8a840",
+                "shasum": ""
+            },
+            "require": {
+                "karixtech/karix-php": "0.0.2"
+            },
+            "require-dev": {
+                "illuminate/notifications": "^5.8@dev",
+                "illuminate/support": "^5.8@dev",
+                "mockery/mockery": "^1.0@dev",
+                "orchestra/database": "^3.8@dev",
+                "orchestra/testbench": "^3.8@dev",
+                "phpunit/phpunit": "^7.4@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bitfumes\\KarixNotificationChannel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "s-sarthak",
+                    "email": "sarthak@bitfumes.com"
+                }
+            ],
+            "description": "Allow you to use karix sms as custom channel in laravel notifications",
+            "time": "2018-08-13T08:52:01+00:00"
         },
         {
             "name": "brick/math",
@@ -740,6 +784,57 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "karixtech/karix-php",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sarthaksavvy/karix-php.git",
+                "reference": "313945192a5a52d967d8b30f5019b4a76c80e2a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sarthaksavvy/karix-php/zipball/313945192a5a52d967d8b30f5019b4a76c80e2a6",
+                "reference": "313945192a5a52d967d8b30f5019b4a76c80e2a6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~1.12",
+                "phpunit/phpunit": "^4.8",
+                "squizlabs/php_codesniffer": "~2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swagger\\Client\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Swagger and contributors",
+                    "homepage": "https://github.com/swagger-api/swagger-codegen"
+                }
+            ],
+            "homepage": "http://swagger.io",
+            "keywords": [
+                "api",
+                "php",
+                "sdk",
+                "swagger"
+            ],
+            "time": "2018-06-15T07:54:55+00:00"
         },
         {
             "name": "laravel/framework",
@@ -5331,16 +5426,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "5.2.0",
+            "version": "5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "3170448f5769fe19f456173d833734e0ff1b84df"
+                "reference": "d870572532cd70bc3fab58f2e23ad423c8404c44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/3170448f5769fe19f456173d833734e0ff1b84df",
-                "reference": "3170448f5769fe19f456173d833734e0ff1b84df",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/d870572532cd70bc3fab58f2e23ad423c8404c44",
+                "reference": "d870572532cd70bc3fab58f2e23ad423c8404c44",
                 "shasum": ""
             },
             "require": {
@@ -5379,7 +5474,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2020-07-20T20:05:34+00:00"
+            "time": "2020-08-15T11:14:08+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -5739,6 +5834,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {

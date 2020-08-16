@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'karix' => [
+        'id' => env('KARIX_ID'),
+        'token' => env('KARIX_TOKEN'),
+    ],
+
 ];

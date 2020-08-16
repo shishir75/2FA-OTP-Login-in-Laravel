@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Mail\OTPMail;
+use App\Notifications\OTPNotification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Notifications\Notifiable;
@@ -61,9 +62,14 @@ class User extends Authenticatable
     public function sendOTP($via)
     {
         if ($via == 'via_sms') {
-
+            $this->notify(new OTPNotification);
         } else {
             Mail::to('iamsarder20@gmail.com')->send(new OTPMail($this->cacheTheOTP()));
         }
+    }
+
+    public function routeNotificationForKarix()
+    {
+        return $this->email;
     }
 }
